@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>monitor</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      border: none;
+      box-sizing: border-box;
+    }
+    #Container {
+      display: flex;
+      height:100vh;
+    }
+  </style>
+
+  <!-- 依赖libs -->
+  <% libs.forEach(function(lib){ %>
+    <script src="<%= lib.src %>"></script>
+  <% }) %>
+
+</head>
+<body>
+  <div id="Container"></div>
+</body>
+</html>
+<script>
+  let myTRTCMonitorInstance = TRTCMonitor.create(
+    document.getElementById("Container"),
+    {
+      signature: "<%= sign %>",
+      query: {
+        sdkAppId: "<%= params.sdkappid %>",
+        roomNum: "<%= params.roomid %>",
+        userId: "<%= params.userid %>",
+      }
+    }
+  );
+  myTRTCMonitorInstance.on("Error", (data) => {
+    console.error(data);
+  });
+</script>
