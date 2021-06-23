@@ -11,15 +11,15 @@ app.use(views(path.join(__dirname, './views'), {
 }));
 
 app.use(async ctx => {
-  const startTime = parseInt((new Date().setHours(0,0,0) - 13 * 24 * 60 * 60 * 1000) / 1000);
-  const endTime = parseInt((new Date().setHours(23, 59, 59)) / 1000);
+  const startTs = parseInt((new Date().setHours(0,0,0) - 13 * 24 * 60 * 60 * 1000) / 1000);
+  const endTs = parseInt(new Date() / 1000);
 
   const query = Object.assign({
-    // sdkAppId: 1400435271,
-    startTime: startTime,
-    endTime: endTime,
-    // roomNum: '',
-    // userId: '',
+    sdkAppId: '',
+    startTs,
+    endTs,
+    roomNum: '',
+    userId: '',
     // createTime: '',
     // destroyTime: '',
     // duration: '',
