@@ -20,7 +20,7 @@
 
   <!-- 依赖libs -->
   <% libs.forEach(function(lib){ %>
-    <script src="<%= lib.src %>"></script>
+    <script src="<%- lib.src %>"></script>
   <% }) %>
 
 </head>
@@ -33,11 +33,7 @@
     document.getElementById("Container"),
     {
       signature: "<%= sign %>",
-      query: {
-        sdkAppId: "<%= params.sdkappid %>",
-        roomNum: "<%= params.roomid %>",
-        userId: "<%= params.userid %>",
-      }
+      query: <%- query %>
     }
   );
   myTRTCMonitorInstance.on("Error", (data) => {
